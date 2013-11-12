@@ -21,6 +21,7 @@ class Redis implements IAdapter
     protected $_keyPrefix;
 
 
+
     /**
      * Конструктор
      *

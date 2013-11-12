@@ -76,7 +76,7 @@ class SmartArray implements \ArrayAccess, \Iterator
      */
     public function valid()
     {
-        return \current($this->_array) === false;
+        return \current($this->_array) !== false;
     }
 
 

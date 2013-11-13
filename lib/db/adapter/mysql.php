@@ -27,10 +27,10 @@ class Mysql extends \PhpBase\Db\Adapter
         $params = [];
         $sql = sprintf(
             'SELECT * FROM %s %s %s %s',
-            $this->_makeTable($table),
-            $this->_makeWhere($where, $params),
-            $this->_makeOrder($order),
-            $this->_makeLimit($limit, $offset)
+            $this->makeTable($table),
+            $this->makeWhere($where, $params),
+            $this->makeOrder($order),
+            $this->makeLimit($limit, $offset)
         );
 
         return $this->query($sql, $params);
@@ -56,7 +56,7 @@ class Mysql extends \PhpBase\Db\Adapter
 
         $sql = sprintf(
             'INSERT INTO %s(%s) VALUES(%s)',
-            $this->_makeTable($table),
+            $this->makeTable($table),
             implode(', ', $fields),
             implode(', ', $placeholders)
         );
@@ -81,11 +81,11 @@ class Mysql extends \PhpBase\Db\Adapter
         $params = [];
         $sql = sprintf(
             'UPDATE %s %s %s %s %s',
-            $this->_makeTable($table),
-            $this->_makeSet($set, $params),
-            $this->_makeWhere($where, $params),
-            $this->_makeOrder($order),
-            $this->_makeLimit($limit, 0)
+            $this->makeTable($table),
+            $this->makeSet($set, $params),
+            $this->makeWhere($where, $params),
+            $this->makeOrder($order),
+            $this->makeLimit($limit, 0)
         );
 
         return $this->query($sql, $params);
@@ -106,10 +106,10 @@ class Mysql extends \PhpBase\Db\Adapter
         $params = [];
         $sql = sprintf(
             'DELETE FROM %s %s %s %s',
-            $this->_makeTable($table),
-            $this->_makeWhere($where, $params),
-            $this->_makeOrder($order),
-            $this->_makeLimit($limit, 0)
+            $this->makeTable($table),
+            $this->makeWhere($where, $params),
+            $this->makeOrder($order),
+            $this->makeLimit($limit, 0)
         );
 
         return $this->query($sql, $params);
@@ -122,7 +122,7 @@ class Mysql extends \PhpBase\Db\Adapter
      * @param string $table Таблица
      * @return string
      */
-    protected function _makeTable($table)
+    public function makeTable($table)
     {
         $parts = explode('.', $table, 2);
         return '`' . implode('`.`', $parts) . '`';
@@ -136,7 +136,7 @@ class Mysql extends \PhpBase\Db\Adapter
      * @param array &$params Массив для записи параметров
      * @return string
      */
-    protected function _makeWhere(array $where, array &$params)
+    public function makeWhere(array $where, array &$params)
     {
         $sql = '';
 
@@ -160,7 +160,7 @@ class Mysql extends \PhpBase\Db\Adapter
      * @param array $order Массив полей
      * @return string
      */
-    protected function _makeOrder(array $order)
+    public function makeOrder(array $order)
     {
         $sql = '';
 
@@ -183,7 +183,7 @@ class Mysql extends \PhpBase\Db\Adapter
      * @param array &$params Массив условий
      * @return string
      */
-    protected function _makeSet(array $set, array &$params)
+    public function makeSet(array $set, array &$params)
     {
         $sql = '';
 
@@ -194,7 +194,7 @@ class Mysql extends \PhpBase\Db\Adapter
                 $parts[] = sprintf('`%s` = :%s', $key, $ph);
                 $params[$ph] = $value;
             }
-            $sql = 'SET ' . implode(' AND ', $parts);
+            $sql = 'SET ' . implode(', ', $parts);
         }
 
         return $sql;
@@ -208,7 +208,7 @@ class Mysql extends \PhpBase\Db\Adapter
      * @param int $offset Значение сдвига
      * @return string
      */
-    protected function _makeLimit($limit, $offset)
+    public function makeLimit($limit, $offset)
     {
         $sql = '';
 

@@ -91,6 +91,18 @@ abstract class Adapter
 
 
     /**
+     * Возвращает последний добавленный идентификатор
+     *
+     * @param string $name Название
+     * @return int
+     */
+    public function getInsertId($name = null)
+    {
+        return (int) $this->_getPdo()->lastInsertId($name);
+    }
+
+
+    /**
      * Выбирает записи
      *
      * @param string $table Таблица
@@ -139,6 +151,53 @@ abstract class Adapter
      */
     abstract  function delete(
         $table, array $where, array $order = [], $limit = 0);
+
+
+    /**
+     * Возвращает экранированное название БД
+     *
+     * @param string $table Таблица
+     * @return string
+     */
+    abstract public function makeTable($table);
+
+
+    /**
+     * Собирает часть WHERE
+     *
+     * @param array $where Массив условий
+     * @param array &$params Массив для записи параметров
+     * @return string
+     */
+    abstract public function makeWhere(array $where, array &$params);
+
+
+    /**
+     * Собирает часть ORDER
+     *
+     * @param array $order Массив полей
+     * @return string
+     */
+    abstract public function makeOrder(array $order);
+
+    /**
+     *  Собирает часть SET
+     *
+     * @param array $set Массив для записи значений
+     * @param array &$params Массив условий
+     * @return string
+     */
+    abstract public function makeSet(array $set, array &$params);
+
+
+    /**
+     * Собирает часть LIMIT
+     *
+     * @param int $limit Значение лимита
+     * @param int $offset Значение сдвига
+     * @return string
+     */
+    abstract public function makeLimit($limit, $offset);
 }
 
 

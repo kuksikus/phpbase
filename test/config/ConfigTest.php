@@ -2,7 +2,7 @@
 
 
 require_once __DIR__ . '/../../autoload.php';
-require_once __DIR__ . '/adapterMock.php';
+require_once __DIR__ . '/ConfigAdapteStub.php';
 
 
 class ConfigTest extends PHPUnit_Framework_TestCase
@@ -14,7 +14,7 @@ class ConfigTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $adapter = new ConfigAdapterMock([
+        $adapter = new configAdapteStub([
             'global' => [
                 'key' => 'value'
             ],

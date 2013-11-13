@@ -2,7 +2,7 @@
 
 
 
-class ConfigAdapterMock implements \PhpBase\Config\IAdapter
+class ConfigAdapteStub implements \PhpBase\Config\IAdapter
 {
 
     protected $_config;

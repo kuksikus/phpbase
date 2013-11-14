@@ -41,7 +41,7 @@ class DbModelTest extends PHPUnit_Framework_TestCase
 
     public function testStaticMethods()
     {
-        $this->assertEquals(2, count(DbModelStub::find($this->db, [])));
+        $this->assertCount(2, DbModelStub::find($this->db, []));
         $this->assertEquals(2, DbModelStub::count($this->db, []));
         $this->assertInstanceOf('DbModelStub',
             DbModelStub::findOne($this->db, ['foo' => 'bar'], ['bar' => 'ASC']));

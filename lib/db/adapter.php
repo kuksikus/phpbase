@@ -57,6 +57,10 @@ abstract class Adapter
         if ($this->_pdo === null) {
             $this->_pdo =
                 new \PDO($this->_dsn, $this->_user, $this->_password);
+            $this->_pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_SILENT);
+            $this->_pdo->setAttribute(
+                \PDO::ATTR_DEFAULT_FETCH_MODE, \PDO::FETCH_ASSOC
+            );
         }
 
         return $this->_pdo;

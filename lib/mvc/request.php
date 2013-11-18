@@ -107,7 +107,7 @@ class Request
      */
     public function getUserIp()
     {
-        return $_SERVER['REMOTE_ADDR'];
+        return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
     }
 
 
@@ -118,6 +118,17 @@ class Request
      */
     public function getUserAgent()
     {
-        return $_SERVER['HTTP_USER_AGENT'];
+        return isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+    }
+
+
+    /**
+     * Возвращает реферера
+     *
+     * @return string
+     */
+    public function getReferer()
+    {
+        return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
     }
 }

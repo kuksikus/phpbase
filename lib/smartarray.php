@@ -113,7 +113,7 @@ class SmartArray implements \ArrayAccess, \Iterator
      */
     public function offsetGet($offset)
     {
-        return isset($this->_array[$offset]) ? $this->_array[$offset] : null;
+        $this->get($offset);
     }
 
 
@@ -127,7 +127,7 @@ class SmartArray implements \ArrayAccess, \Iterator
      */
     public function offsetSet($offset, $value)
     {
-        $this->_array[$offset] = $value;
+        $this->set($offset, $value);
         return;
     }
 
@@ -143,5 +143,79 @@ class SmartArray implements \ArrayAccess, \Iterator
     {
         unset($this->_array[$offset]);
         return;
+    }
+
+
+    /**
+     * Получает значение
+     *
+     * @param string $key
+     * @param mixed $default
+     * @return mixed
+     */
+    public function get($key, $default = null)
+    {
+        return isset($this->_array[$key]) ? $this->_array[$key] : $default;
+    }
+
+
+    /**
+     * Устанавливает значение
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function set($key, $value)
+    {
+        $this->_array[$key] = $value;
+    }
+
+
+    /**
+     * Получает значение
+     *
+     * @param string $key
+     * @return mixed
+     */
+    public function __get($key)
+    {
+        return $this->get($key);
+    }
+
+
+    /**
+     * Устанавливает значение
+     *
+     * @param string $key
+     * @param mixed $value
+     * @return void
+     */
+    public function __set($key, $value)
+    {
+        $this->set($key, $value);
+    }
+
+
+    /**
+     * Проверяет наличие ключе
+     *
+     * @param string $key Ключ
+     * @return bool
+     */
+    public function __isset($key)
+    {
+        return isset($this->_array[$key]);
+    }
+
+
+    /**
+     * Возвращает массив значений
+     *
+     * @return array
+     */
+    public function getArray()
+    {
+        return $this->_array;
     }
 }

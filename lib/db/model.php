@@ -37,7 +37,7 @@ abstract class Model
      * @param Adapter $db Адаптер БД
      * @param array $data Начальные данные
      */
-    public function __construct(Adapter $db, $data = [])
+    public function __construct(Adapter $db, array $data = [])
     {
         $this->_db = $db;
 
@@ -139,6 +139,17 @@ abstract class Model
             $this->_db->delete(static::$_table, ['id' => $this->id]);
             $this->id = static::$_defaults['id'];
         }
+    }
+
+
+    /**
+     * Возвращает адаптер
+     *
+     * @return Adapter
+     */
+    public function getAdapter()
+    {
+        return $this->_db;
     }
 
 

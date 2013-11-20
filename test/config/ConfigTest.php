@@ -64,6 +64,6 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->assertTrue(in_array('example', $keys));
         $this->assertTrue(in_array('invalid', $keys));
 
-        $this->assertInstanceOf('\PhpBase\SmartArray', $this->_config->getKeySpaceValues('global'));
+        $this->assertInstanceOf('\PhpBase\SmartArray', $this->_config->getValues('global'));
     }
 }

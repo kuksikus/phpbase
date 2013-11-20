@@ -85,18 +85,16 @@ class Config
 
 
     /**
-     * Возвращает все значения пространства ключей в виде смарт-массива
+     * Возвращает все значения пространства ключей в виде массива
      *
      * @param string $keyspace Пространство ключей
-     * @return SmartArray
+     * @return array
      */
-    public function getKeySpaceValues($keyspace)
+    public function getValues($keyspace)
     {
         $this->_loadKeySpace($keyspace);
 
-        return new SmartArray(
-            isset($this->_conf[$keyspace]) ? $this->_conf[$keyspace] : []
-        );
+        return isset($this->_conf[$keyspace]) ? $this->_conf[$keyspace] : [];
     }
 
 

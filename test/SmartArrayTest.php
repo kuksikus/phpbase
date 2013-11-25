@@ -26,7 +26,34 @@ class SmartArrayTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(666, $sm['id']);
         $this->assertEquals(null, $sm['nonexists']);
 
+        $this->assertEquals('bar', $sm->foo);
+        $this->assertEquals(666, $sm->id);
+        $this->assertEquals(null, $sm->nonexists);
+
+        $this->assertEquals('bar', $sm->get('foo'));
+        $this->assertEquals(666, $sm->get('id'));
+        $this->assertEquals('default', $sm->get('nonexists', 'default'));
+
         $this->assertTrue(isset($sm['id']));
+        $this->assertTrue(isset($sm->id));
+
+
+        $sm['foo'] = 999;
+        $sm->nonexists = 'abc';
+        $sm->set('key', 'value');
+
+        $this->assertEquals(999, $sm->foo);
+        $this->assertEquals('value', $sm['key']);
+        $this->assertEquals('abc', $sm->get('nonexists', 'default'));
+    }
+
+
+    public function testGetArray()
+    {
+        $source = ['foo' => 'barbar'];
+        $sm = new \PhpBase\SmartArray($source);
+
+        $this->assertEquals($source, $sm->getArray());
     }
 
 

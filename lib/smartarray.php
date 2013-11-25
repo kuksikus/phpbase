@@ -113,7 +113,7 @@ class SmartArray implements \ArrayAccess, \Iterator
      */
     public function offsetGet($offset)
     {
-        $this->get($offset);
+        return $this->get($offset);
     }
 
 

@@ -24,6 +24,11 @@ class Request
     /**
      * @var \PhpBase\SmartArray
      */
+    public $request;
+
+    /**
+     * @var \PhpBase\SmartArray
+     */
     public $cookie;
 
 
@@ -43,6 +48,7 @@ class Request
         $this->get = new \PhpBase\SmartArray($_GET);
         $this->post = new \PhpBase\SmartArray($_POST);
         $this->cookie = new \PhpBase\SmartArray($_COOKIE);
+        $this->request = new \PhpBase\SmartArray($_REQUEST);
 
         $uri = $_SERVER['REQUEST_URI'];
         $qmPos = strpos($_SERVER['REQUEST_URI'], '?');

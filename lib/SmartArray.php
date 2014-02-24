@@ -149,8 +149,8 @@ class SmartArray implements \ArrayAccess, \Iterator
     /**
      * Получает значение
      *
-     * @param string $key
-     * @param mixed $default
+     * @param string $key Ключ
+     * @param mixed $default Значение по-умолчанию
      * @return mixed
      */
     public function get($key, $default = null)
@@ -162,8 +162,8 @@ class SmartArray implements \ArrayAccess, \Iterator
     /**
      * Устанавливает значение
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string $key Ключ
+     * @param mixed $value Значение
      * @return void
      */
     public function set($key, $value)
@@ -175,7 +175,7 @@ class SmartArray implements \ArrayAccess, \Iterator
     /**
      * Получает значение
      *
-     * @param string $key
+     * @param string $key Ключ
      * @return mixed
      */
     public function __get($key)
@@ -187,8 +187,8 @@ class SmartArray implements \ArrayAccess, \Iterator
     /**
      * Устанавливает значение
      *
-     * @param string $key
-     * @param mixed $value
+     * @param string $key Ключ
+     * @param mixed $value Значение
      * @return void
      */
     public function __set($key, $value)

@@ -3,12 +3,13 @@
  * Файл класса ответа - перенаправление
  */
 
-namespace PhpBase\Mvc;
+namespace PhpBase\Mvc\Response;
+
 
 /**
  * Класс ответа - перенаправление
  */
-class Redirect extends Response
+class Redirect extends \PhpBase\Mvc\Response
 {
     /**
      * Конструктор

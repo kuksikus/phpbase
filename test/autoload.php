@@ -4,8 +4,7 @@
  */
 
 
-define('PHPBASE_LIB', __DIR__ . DIRECTORY_SEPARATOR .
-    'lib' . DIRECTORY_SEPARATOR);
+define('PHPBASE_LIB', __DIR__  . '/../lib/' );
 
 
 /**
@@ -15,7 +14,7 @@ spl_autoload_register(
     function($className)
     {
         if (substr($className, 0, 8) === 'PhpBase\\') {
-            $subPath = strtolower(substr($className, 8));
+            $subPath = substr($className, 8);
             $subPath = str_replace('\\', DIRECTORY_SEPARATOR, $subPath);
 
             $filePath = PHPBASE_LIB . $subPath . '.php';

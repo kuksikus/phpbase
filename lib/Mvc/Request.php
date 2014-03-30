@@ -124,7 +124,8 @@ class Request
      */
     public function getUserAgent()
     {
-        return isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : '';
+        return isset($_SERVER['HTTP_USER_AGENT']) ?
+            $_SERVER['HTTP_USER_AGENT'] : '';
     }
 
 

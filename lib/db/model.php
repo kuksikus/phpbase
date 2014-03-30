@@ -112,19 +112,20 @@ abstract class Model
     /**
      * Создает или обновляет запись модели
      *
-     * @return void
+     * @return \PDOStatement
      */
     public function save()
     {
         if ($this->id > 0) {
-            $this->_db->update(
+            $statement = $this->_db->update(
                 static::$_table, ['id' => $this->id], $this->_data
             );
         } else {
             $this->id = null;
-            $this->_db->insert(static::$_table, $this->_data);
+            $statement = $this->_db->insert(static::$_table, $this->_data);
             $this->id = $this->_db->getInsertId();
         }
+        return $statement;
     }
 
 

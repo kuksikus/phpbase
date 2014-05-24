@@ -72,6 +72,18 @@ abstract class Model
         return;
     }
 
+    /**
+     * Магический метод проверки свойства
+     *
+     * @param string $key Ключ
+     * @return void
+     */
+    public function __isset($key)
+    {
+        return $this->exists($key);
+    }
+
+
 
     /**
      * Возвращает свойство модели
@@ -106,6 +118,18 @@ abstract class Model
         }
 
         return;
+    }
+
+
+    /**
+     * Проверяет свойство модели
+     *
+     * @param string $key Ключ
+     * @return void
+     */
+    public function exists($key)
+    {
+        return isset(static::$_defaults[$key]);
     }
 
 

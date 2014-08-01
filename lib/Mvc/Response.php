@@ -114,7 +114,7 @@ class Response
             sprintf(
                 'HTTP/1.1 %s %s',
                 $this->_status,
-                self::$_statusList[$this->_status]
+                static::$_statusList[$this->_status]
             )
         );
 

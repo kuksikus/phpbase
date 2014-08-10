@@ -19,6 +19,11 @@ class Request
      * @var \PhpBase\SmartArray
      */
     public $post;
+    
+    /**
+     * @var \PhpBase\SmartArray
+     */
+    public $files;
 
 
     /**
@@ -49,6 +54,7 @@ class Request
         $this->post = new \PhpBase\SmartArray($_POST);
         $this->cookie = new \PhpBase\SmartArray($_COOKIE);
         $this->request = new \PhpBase\SmartArray($_REQUEST);
+        $this->files = new \PhpBase\SmartArray($_FILES);
 
         $uri = $_SERVER['REQUEST_URI'];
         $qmPos = strpos($_SERVER['REQUEST_URI'], '?');

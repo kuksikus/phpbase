@@ -64,6 +64,17 @@ class Response
 
 
     /**
+     * Возвращает тело ответа
+     *
+     * @return string
+     */
+    public function getBody()
+    {
+        return $this->_body;
+    }
+
+
+    /**
      * Устанавливает код ответа
      *
      * @param int $code Код
@@ -74,6 +85,17 @@ class Response
         if (isset(self::$_statusList[$code])) {
             $this->_status = $code;
         }
+    }
+
+
+    /**
+     * Возвращает код ответа
+     *
+     * @return int
+     */
+    public function getStatus()
+    {
+        return $this->_status;
     }
 
 

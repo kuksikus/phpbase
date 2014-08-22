@@ -82,7 +82,7 @@ class Response
      */
     public function setStatus($code)
     {
-        if (isset(self::$_statusList[$code])) {
+        if (isset(static::$_statusList[$code])) {
             $this->_status = $code;
         }
     }

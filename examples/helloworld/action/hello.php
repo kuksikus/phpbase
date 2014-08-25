@@ -4,7 +4,7 @@
 namespace Action;
 
 /**
- * Класс действия для главной страницы
+ * Класс действия страницы приветствия
  */
 class Hello implements \PhpBase\Mvc\IAction
 {

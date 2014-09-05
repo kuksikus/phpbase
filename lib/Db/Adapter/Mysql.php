@@ -222,4 +222,35 @@ class Mysql extends \PhpBase\Db\Adapter
 
         return $sql;
     }
+    
+    
+    /**
+     * Начало транзакции
+     *
+     * @return bool
+     */
+    public function beginTransaction()
+    {
+        return $this->_getPdo()->beginTransaction();
+    }
+
+    /**
+     * Фиксация транзакции
+     *
+     * @return bool
+     */
+    public function commit()
+    {
+        return $this->_getPdo()->commit();
+    }
+
+    /**
+     * Откат изменений в рамках транзакции
+     *
+     * @return bool
+     */
+    public function rollBack()
+    {
+        return $this->_getPdo()->rollBack();
+    }
 }

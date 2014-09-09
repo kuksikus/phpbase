@@ -202,6 +202,37 @@ abstract class Adapter
      * @return string
      */
     abstract public function makeLimit($limit, $offset);
+    
+    
+    /**
+     * Начало транзакции
+     *
+     * @return bool
+     */
+    public function beginTransaction()
+    {
+        return $this->_getPdo()->beginTransaction();
+    }
+
+    /**
+     * Фиксация транзакции
+     *
+     * @return bool
+     */
+    public function commit()
+    {
+        return $this->_getPdo()->commit();
+    }
+
+    /**
+     * Откат изменений в рамках транзакции
+     *
+     * @return bool
+     */
+    public function rollBack()
+    {
+        return $this->_getPdo()->rollBack();
+    }
 }
 
 

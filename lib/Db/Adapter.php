@@ -202,6 +202,28 @@ abstract class Adapter
      * @return string
      */
     abstract public function makeLimit($limit, $offset);
+    
+
+    /**
+     * Начало транзакции
+     *
+     * @return bool
+     */
+    abstract public function beginTransaction();
+
+    /**
+     * Фиксация транзакции
+     *
+     * @return bool
+     */
+    abstract public function commit();
+
+    /**
+     * Откат изменений в рамках транзакции
+     *
+     * @return bool
+     */
+    abstract public function rollBack();
 }
 
 

@@ -54,6 +54,26 @@ class Config
 
         return false;
     }
+    
+    
+    /**
+     * Устанавливает значение в пространство ключей в виде массива
+     *
+     * @param string $keyspace Пространство ключей
+     * @param array $values Значение
+     *
+     * @return bool
+     */
+    public function setValues($keyspace, $values)
+    {
+        if ($this->_adapter->set($keyspace, $values)) {
+            $this->_conf[$keyspace] = $values;
+            return true;
+        }
+
+        return false;
+    }
+    
 
 
     /**

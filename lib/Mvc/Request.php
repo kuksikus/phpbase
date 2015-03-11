@@ -138,4 +138,15 @@ class Request
     {
         return isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
     }
+    
+    
+    /**
+     * Возвращает аргументы командной стркои
+     *
+     * @return mixed
+     */
+    public function getArgv()
+    {
+        return isset($_SERVER['argv']) ? $_SERVER['argv'] : [];
+    }
 }

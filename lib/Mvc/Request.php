@@ -143,7 +143,7 @@ class Request
     /**
      * Возвращает аргументы командной стркои
      *
-     * @return mixed
+     * @return array
      */
     public function getArgv()
     {
